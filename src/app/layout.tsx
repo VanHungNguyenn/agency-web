@@ -1,28 +1,34 @@
-import { Provider } from "@/components/ui/provider";
-import type { Metadata } from "next";
-import { Roboto_Serif } from "next/font/google";
-import "./globals.css";
+import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
+import { Provider } from '@/components/ui/provider'
+import type { Metadata } from 'next'
+import { Roboto_Serif } from 'next/font/google'
+import './globals.css'
 
 const robotoSerif = Roboto_Serif({
-  variable: "--font-roboto-serif",
-  subsets: ["latin"],
-});
+	variable: '--font-roboto-serif',
+	subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
-  title: "Agency web app",
-  description: "A web app for managing an agency",
-};
+	title: 'Agency web app',
+	description: 'A web app for managing an agency',
+}
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode
 }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${robotoSerif.variable}`}>
-        <Provider>{children}</Provider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang='en' suppressHydrationWarning>
+			<body className={`${robotoSerif.variable}`}>
+				<Provider>
+					<Header />
+					{children}
+					<Footer />
+				</Provider>
+			</body>
+		</html>
+	)
 }
