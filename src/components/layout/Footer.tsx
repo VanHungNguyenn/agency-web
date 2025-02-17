@@ -60,7 +60,8 @@ const Footer = () => {
 			>
 				<Grid
 					templateColumns={{
-						base: 'repeat(2, 1fr)',
+						base: 'repeat(1, 1fr)',
+						sm: 'repeat(2, 1fr)',
 						xl: 'repeat(5, 1fr)',
 					}}
 					gap={{
@@ -78,27 +79,62 @@ const Footer = () => {
 					>
 						<Text
 							color='white'
-							fontSize='44px'
+							fontSize={{
+								base: '24px',
+								xl: '44px',
+							}}
 							pb={5}
 							fontWeight={600}
 						>
 							Let's Talk!
 						</Text>
-						<Text color='fg.inverted' fontSize='24px' pb={2}>
+						<Text
+							color='fg.inverted'
+							fontSize={{
+								base: '18px',
+								xl: '24px',
+							}}
+							pb={2}
+						>
 							Contact Info
 						</Text>
-						<Text color='fg.subtle'>closerpage@email.com</Text>
-						<Text color='fg.subtle'>
+						<Text
+							color='fg.subtle'
+							fontSize={{
+								base: '14px',
+								xl: '16px',
+							}}
+						>
+							closerpage@email.com
+						</Text>
+						<Text
+							color='fg.subtle'
+							fontSize={{
+								base: '14px',
+								xl: '16px',
+							}}
+						>
 							12 Hilton St, Manchester M1 1JF
 						</Text>
-						<Text color='fg.subtle'>+44 012 34 5678</Text>
+						<Text
+							color='fg.subtle'
+							fontSize={{
+								base: '14px',
+								xl: '16px',
+							}}
+						>
+							+44 012 34 5678
+						</Text>
 					</GridItem>
 					{footerLinks.map(({ title, links }, index) => (
 						<GridItem key={index} colSpan={1} textAlign='left'>
 							<Text
 								color='white'
 								fontSize='20px'
-								pb={9}
+								pb={{
+									base: 5,
+									xl: 9,
+								}}
 								fontWeight={600}
 							>
 								{title}
@@ -110,6 +146,10 @@ const Footer = () => {
 											key={index}
 											color='fg.subtle'
 											_hover={{ color: 'blue.300' }}
+											fontSize={{
+												base: '14px',
+												xl: '16px',
+											}}
 										>
 											{label}
 										</Text>
@@ -141,7 +181,13 @@ const Footer = () => {
 							)
 						)}
 					</HStack>
-					<Text color='fg.subtle'>
+					<Text
+						color='fg.subtle'
+						fontSize={{
+							base: '14px',
+							xl: '16px',
+						}}
+					>
 						Next.js Site Template for Agency and Portfolio - © 2025
 					</Text>
 				</Box>

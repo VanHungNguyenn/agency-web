@@ -39,15 +39,35 @@ const Header = () => {
 						<NextImage src={logo} alt='logo' />
 					</Link>
 				</Box>
-				<HStack gap={10}>
-					{navLinks.map((link) => (
-						<NavLink key={link.href} href={link.href}>
-							{link.label}
-						</NavLink>
-					))}
-				</HStack>
-				<Box>
-					<Button size='lg'>Get a Quote</Button>
+				<Box
+					display='flex'
+					justifyContent='space-between'
+					alignItems='center'
+					gap={20}
+				>
+					<HStack
+						gap={10}
+						display={{
+							base: 'none',
+							lg: 'flex',
+						}}
+					>
+						{navLinks.map((link) => (
+							<NavLink key={link.href} href={link.href}>
+								{link.label}
+							</NavLink>
+						))}
+					</HStack>
+					<Box>
+						<Button
+							size={{
+								base: 'sm',
+								lg: 'lg',
+							}}
+						>
+							Get a Quote
+						</Button>
+					</Box>
 				</Box>
 			</Box>
 		</Box>
