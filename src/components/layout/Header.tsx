@@ -1,8 +1,16 @@
 'use client'
 import logo from '@/assets/images/logo.svg'
-import { Box, Button, HStack } from '@chakra-ui/react'
+import {
+	MenuContent,
+	MenuItem,
+	MenuRoot,
+	MenuTrigger,
+} from '@/components/ui/menu'
+import { Box, Button, HStack, IconButton } from '@chakra-ui/react'
 import NextImage from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { FaBars } from 'react-icons/fa'
 import NavLink from './NavLink'
 
 const navLinks = [
@@ -13,6 +21,8 @@ const navLinks = [
 ]
 
 const Header = () => {
+	const router = useRouter()
+
 	return (
 		<Box
 			as='header'
@@ -43,7 +53,10 @@ const Header = () => {
 					display='flex'
 					justifyContent='space-between'
 					alignItems='center'
-					gap={20}
+					gap={{
+						base: 4,
+						lg: 20,
+					}}
 				>
 					<HStack
 						gap={10}
@@ -67,6 +80,36 @@ const Header = () => {
 						>
 							Get a Quote
 						</Button>
+					</Box>
+					<Box
+						display={{
+							base: 'block',
+							lg: 'none',
+						}}
+					>
+						<MenuRoot>
+							<MenuTrigger asChild>
+								<IconButton aria-label='bars' variant='outline'>
+									<FaBars />
+								</IconButton>
+							</MenuTrigger>
+							<MenuContent>
+								{navLinks.map((link) => (
+									<MenuItem
+										key={link.href}
+										value={link.href}
+										p={4}
+										cursor='pointer'
+										onClick={() => router.push(link.href)}
+										_hover={{
+											color: 'blue.600',
+										}}
+									>
+										{link.label}
+									</MenuItem>
+								))}
+							</MenuContent>
+						</MenuRoot>
 					</Box>
 				</Box>
 			</Box>
